@@ -13,9 +13,25 @@ from __future__ import annotations
 
 from importlib import metadata
 
+from hebrewcal.calendars.gregorian import GregorianDate
+from hebrewcal.calendars.hebrew import HebrewDate
+from hebrewcal.calendars.julian import JulianDate
+from hebrewcal.conversion import to_gregorian, to_hebrew, to_julian, weekday
+from hebrewcal.core.calendar import Weekday
+
 try:
     __version__ = metadata.version("hebrewcal")
 except metadata.PackageNotFoundError:  # pragma: no cover - source checkout without install
     __version__ = "0.0.0.dev0"
 
-__all__ = ["__version__"]
+__all__ = [
+    "GregorianDate",
+    "HebrewDate",
+    "JulianDate",
+    "Weekday",
+    "__version__",
+    "to_gregorian",
+    "to_hebrew",
+    "to_julian",
+    "weekday",
+]

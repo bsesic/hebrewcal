@@ -1,0 +1,1 @@
+"""Date output formatting."""

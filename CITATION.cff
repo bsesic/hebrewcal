@@ -15,6 +15,14 @@ authors:
     orcid: "https://orcid.org/0000-0002-9697-607X"
 repository-code: "https://github.com/bsesic/hebrewcal"
 url: "https://hebrewcal.readthedocs.io"
+doi: 10.5281/zenodo.20583973
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20583972
+    description: The concept DOI resolving to the latest version.
+  - type: doi
+    value: 10.5281/zenodo.20583973
+    description: The versioned DOI for v0.1.1.
 license: MIT
 version: 0.1.1
 date-released: "2026-06-07"

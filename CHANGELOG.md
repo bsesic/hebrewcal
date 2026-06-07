@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-06-07
+
+### Added
+
+- `CITATION.cff` and `.zenodo.json` metadata for citation and Zenodo archival
+  (DOI). No functional code changes.
+
 ## [0.1.0] - 2026-06-07
 
 First release. Phase 0 (infrastructure) and Phase 1 (calendar core, conversion and date
@@ -36,5 +43,6 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/bsesic/hebrewcal/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bsesic/hebrewcal/releases/tag/v0.1.0

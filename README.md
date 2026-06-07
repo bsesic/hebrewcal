@@ -98,6 +98,12 @@ pytest
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the branching strategy and conventions.
 
+## Citation
+
+If you use `hebrewcal` in academic work, please cite it. Citation metadata is provided in
+[`CITATION.cff`](CITATION.cff), and each release is archived on Zenodo with a DOI (see the
+release page for the version-specific DOI).
+
 ## License
 
 [MIT](LICENSE) © Benjamin Schnabel

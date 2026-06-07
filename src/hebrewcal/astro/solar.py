@@ -19,6 +19,11 @@ from hebrewcal.calendars.gregorian import GregorianDate
 # accounting for atmospheric refraction (34') and the solar semi-diameter (16').
 SUNRISE_SUNSET_DEPRESSION: float = 0.8333
 
+# Standard twilight solar-depression angles, in degrees below the horizon.
+CIVIL_DEPRESSION: float = 6.0
+NAUTICAL_DEPRESSION: float = 12.0
+ASTRONOMICAL_DEPRESSION: float = 18.0
+
 
 def _solar_terms(t: float) -> tuple[float, float]:
     """Return (declination_degrees, equation_of_time_minutes) for Julian century ``t``."""
@@ -121,4 +126,28 @@ def sunset(date: GregorianDate, location: Location) -> datetime.datetime | None:
 def solar_noon(date: GregorianDate, location: Location) -> datetime.datetime:
     """Return solar noon as a local datetime."""
     minutes = _solar_noon_minutes_utc(date.to_rd(), location.longitude)
+    return local_datetime(date.to_rd(), minutes=minutes, timezone=location.timezone)
+
+
+def dawn(
+    date: GregorianDate, location: Location, depression: float = CIVIL_DEPRESSION
+) -> datetime.datetime | None:
+    """Return morning twilight for the given solar depression, or None at high latitudes."""
+    minutes = _event_minutes_utc(
+        date.to_rd(), location.latitude, location.longitude, depression, True
+    )
+    if minutes is None:
+        return None
+    return local_datetime(date.to_rd(), minutes=minutes, timezone=location.timezone)
+
+
+def dusk(
+    date: GregorianDate, location: Location, depression: float = CIVIL_DEPRESSION
+) -> datetime.datetime | None:
+    """Return evening twilight for the given solar depression, or None at high latitudes."""
+    minutes = _event_minutes_utc(
+        date.to_rd(), location.latitude, location.longitude, depression, False
+    )
+    if minutes is None:
+        return None
     return local_datetime(date.to_rd(), minutes=minutes, timezone=location.timezone)

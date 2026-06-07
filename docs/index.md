@@ -12,18 +12,53 @@ the Omer, yahrzeit, the sabbatical and jubilee cycle, for Israel and the Diaspor
 names, proleptic calendars, the Julian/Gregorian reform, and the documented "missing
 years" of the Anno Mundi count).
 
-```{toctree}
-:maxdepth: 2
-:caption: Contents
+```{admonition} Project status
+:class: note
 
-api
+Early development. The calendar core, conversion and date handling (Phase 1) are
+implemented and documented here. Astronomy, holidays and religious times follow on the
+roadmap.
 ```
 
-## Design in one sentence
+## The idea in one sentence
 
-Everything pivots on the Rata Die (RD) day count from Dershowitz & Reingold,
+Everything pivots on the **Rata Die (RD)** day count from Dershowitz & Reingold,
 *Calendrical Calculations*: every calendar implements only `to_rd` and `from_rd`, and
 conversion between any two calendars always goes through RD.
+
+```python
+from hebrewcal import GregorianDate, to_hebrew, weekday
+
+g = GregorianDate(1867, 10, 31)
+print(to_hebrew(g))      # HebrewDate(year=5628, month=8, day=2)
+print(weekday(g).name)   # THURSDAY
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Getting started
+
+installation
+quickstart
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: User guide
+
+guide/index
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Reference
+
+examples
+testing
+api
+contributing
+changelog
+```
 
 ## Indices
 

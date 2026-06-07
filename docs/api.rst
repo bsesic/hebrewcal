@@ -1,38 +1,79 @@
 API reference
 =============
 
-This section is generated from the package docstrings. As the library grows
-through the roadmap phases, concrete modules will appear here automatically.
+This section is generated from the package docstrings.
+
+Package root
+------------
 
 .. automodule:: hebrewcal
    :members:
 
-Subpackages
------------
+Core
+----
 
-.. automodule:: hebrewcal.core
+.. automodule:: hebrewcal.core.rata_die
    :members:
 
-.. automodule:: hebrewcal.calendars
+.. automodule:: hebrewcal.core.calendar
    :members:
 
-.. automodule:: hebrewcal.hebrew
+Calendars
+---------
+
+.. automodule:: hebrewcal.calendars.gregorian
    :members:
 
-.. automodule:: hebrewcal.eras
+.. automodule:: hebrewcal.calendars.julian
    :members:
 
-.. automodule:: hebrewcal.parsing
+.. automodule:: hebrewcal.calendars.hebrew
    :members:
 
-.. automodule:: hebrewcal.formatting
+Conversion
+----------
+
+.. automodule:: hebrewcal.conversion
    :members:
 
-.. automodule:: hebrewcal.astro
+Hebrew arithmetic engine
+------------------------
+
+.. automodule:: hebrewcal.hebrew.metonic
    :members:
 
-.. automodule:: hebrewcal.religious
+.. automodule:: hebrewcal.hebrew.molad
    :members:
 
-.. automodule:: hebrewcal.calendars_alt
+.. automodule:: hebrewcal.hebrew.dechiyot
+   :members:
+
+.. automodule:: hebrewcal.hebrew.yeartype
+   :members:
+
+.. automodule:: hebrewcal.hebrew.keviah
+   :members:
+
+Parsing and formatting
+----------------------
+
+.. automodule:: hebrewcal.parsing.dates
+   :members:
+
+.. automodule:: hebrewcal.formatting.dates
+   :members:
+
+Numerals and names
+------------------
+
+.. automodule:: hebrewcal.numerals
+   :members:
+
+.. automodule:: hebrewcal.names
+   :members:
+
+Eras
+----
+
+.. automodule:: hebrewcal.eras.anno_mundi
    :members:

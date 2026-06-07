@@ -23,7 +23,9 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+# The specs directory holds internal planning documents (roadmap, implementation
+# plans); they live in the repo but are not part of the published documentation.
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "specs/**"]
 
 html_theme = "furo"
 html_static_path = ["_static"]

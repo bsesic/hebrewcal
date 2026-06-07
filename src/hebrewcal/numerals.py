@@ -1,6 +1,7 @@
 """Convert between integers and Hebrew numerals (gematria).
 
 Hebrew numerals are additive letter values. Conventions implemented here:
+
 - 15 and 16 are written ט״ו and ט״ז (9+6, 9+7) to avoid spelling fragments of
   the divine name.
 - A geresh (׳) marks a single-letter number; a gershayim (״) is inserted before

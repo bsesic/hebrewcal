@@ -1,0 +1,35 @@
+{
+  "title": "hebrewcal: a pure-Python library for the Hebrew calendar",
+  "description": "hebrewcal makes the Hebrew calendar usable programmatically and converts it bidirectionally against the Gregorian and Julian calendars. Every computation is performed locally; the library never issues network calls to any external service. It serves both religious use (holidays, Shabbat, zmanim, Torah readings) and academic use (historical, medieval and ancient dates, proleptic calendars, the Julian/Gregorian reform, and the documented 'missing years' of the Anno Mundi count).",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Schnabel, Benjamin",
+      "affiliation": "École Pratique des Hautes Études – PSL",
+      "orcid": "0000-0002-9697-607X"
+    }
+  ],
+  "keywords": [
+    "Hebrew calendar",
+    "Jewish calendar",
+    "calendrical calculations",
+    "Gregorian calendar",
+    "Julian calendar",
+    "molad",
+    "gematria"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/bsesic/hebrewcal",
+      "scheme": "url"
+    },
+    {
+      "relation": "isIdenticalTo",
+      "identifier": "https://pypi.org/project/hebrewcal/",
+      "scheme": "url"
+    }
+  ]
+}

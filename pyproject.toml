@@ -89,6 +89,10 @@ src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM", "RUF"]
+# This library deliberately embeds Hebrew text in strings, comments and
+# docstrings. The ambiguous-unicode checks (homoglyph detection for Latin code)
+# are false positives in that context, so they are disabled project-wide.
+ignore = ["RUF001", "RUF002", "RUF003"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["hebrewcal"]

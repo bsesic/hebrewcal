@@ -5,6 +5,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/hebrewcal.svg)](https://pypi.org/project/hebrewcal/)
 [![Python versions](https://img.shields.io/pypi/pyversions/hebrewcal.svg)](https://pypi.org/project/hebrewcal/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20583972.svg)](https://doi.org/10.5281/zenodo.20583972)
 
 A pure-Python library for the Hebrew calendar.
 
@@ -101,8 +102,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the branching strategy and convention
 ## Citation
 
 If you use `hebrewcal` in academic work, please cite it. Citation metadata is provided in
-[`CITATION.cff`](CITATION.cff), and each release is archived on Zenodo with a DOI (see the
-release page for the version-specific DOI).
+[`CITATION.cff`](CITATION.cff), and each release is archived on Zenodo.
+
+- **Concept DOI** (always resolves to the latest version): [10.5281/zenodo.20583972](https://doi.org/10.5281/zenodo.20583972)
+- Each release also has its own version-specific DOI on the Zenodo record.
 
 ## License
 

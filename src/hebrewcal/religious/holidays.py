@@ -60,6 +60,7 @@ def holidays(year: int, diaspora: bool = True) -> list[Holiday]:
     """Return all observances of the Hebrew ``year``, sorted chronologically."""
     result: list[Holiday] = []
     result += _major(year, diaspora)
+    result += _minor(year, diaspora)
     result += rosh_chodesh(year)
     result.sort(key=lambda h: (h.date.to_rd(), h.name))
     return result
@@ -110,3 +111,32 @@ def _major(year: int, diaspora: bool) -> list[Holiday]:
 def _purim_month(year: int) -> int:
     """Return the month that carries Purim (Adar, or Adar II in a leap year)."""
     return 13 if is_leap_year(year) else 12
+
+
+def _minor(year: int, diaspora: bool) -> list[Holiday]:
+    """Return the minor (mostly rabbinic) festive days."""
+    out: list[Holiday] = []
+
+    def add(name: str, month: int, day: int) -> None:
+        out.append(Holiday(name, HebrewDate(year, month, day), Category.MINOR_FESTIVAL))
+
+    # Hanukkah: 25 Kislev for eight days. The run rolls into Tevet a day earlier when
+    # Kislev is short, so build it by walking RD from 25 Kislev.
+    start = HebrewDate(year, 9, 25).to_rd()
+    for i in range(8):
+        out.append(Holiday("Hanukkah", HebrewDate.from_rd(start + i), Category.MINOR_FESTIVAL))
+
+    add("Tu BiShvat", 11, 15)
+
+    purim_month = _purim_month(year)
+    if is_leap_year(year):
+        # Purim Katan / Shushan Purim Katan fall in Adar I.
+        add("Purim Katan", 12, 14)
+        add("Shushan Purim Katan", 12, 15)
+    add("Purim", purim_month, 14)
+    add("Shushan Purim", purim_month, 15)
+
+    add("Pesach Sheni", 2, 14)
+    add("Lag BaOmer", 2, 18)
+    add("Tu B'Av", 5, 15)
+    return out

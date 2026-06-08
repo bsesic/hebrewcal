@@ -16,6 +16,7 @@ names
 hebrew-internals
 anno-mundi
 astronomy
+holidays
 ```
 
 ## How the pieces fit together

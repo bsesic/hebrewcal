@@ -95,3 +95,12 @@ Astronomy
 
 .. automodule:: hebrewcal.astro.molad
    :members:
+
+Religious observances
+---------------------
+
+.. automodule:: hebrewcal.religious.holidays
+   :members:
+
+.. automodule:: hebrewcal.religious.omer
+   :members:

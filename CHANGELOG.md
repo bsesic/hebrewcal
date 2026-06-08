@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-07
+
+Phase 3 of the roadmap: the holiday engine. This release completes the MVP
+(calendar core, astronomy and holidays).
+
+### Added
+
+- Holiday engine for the Hebrew year: a `Holiday` value type, a `Category` enum,
+  and `holidays(year, diaspora=...)` / `holidays_on(date)`.
+- Major festivals with Israel/Diaspora differences (second festival day, Simchat
+  Torah placement, 7- vs 8-day Pesach, 1 vs 2 days Shavuot), plus Chol HaMoed.
+- Minor festivals (Hanukkah, Tu BiShvat, Purim and Shushan Purim with leap-year
+  Adar II placement, Lag BaOmer, Tu B'Av, Pesach Sheni) and Rosh Chodesh.
+- Public fasts with their postponement rules (Tzom Gedaliah, Asara B'Tevet,
+  Ta'anit Esther, Shiva Asar B'Tammuz, Tisha B'Av, Ta'anit Bechorot).
+- Modern Israeli days with the statutory weekday adjustments (Yom HaShoah,
+  Yom HaZikaron, Yom HaAtzmaut, Yom Yerushalayim).
+- Minority/communal feasts (Sigd, Mimouna).
+- The Omer count (`omer_count`, `omer_week_day`).
+- The special Shabbatot (Shekalim, Zachor, Parah, HaChodesh, HaGadol, Shuvah,
+  Chazon, Nachamu).
+
 ## [0.2.0] - 2026-06-07
 
 Phase 2 of the roadmap: the astronomy layer.
@@ -60,7 +82,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/bsesic/hebrewcal/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/bsesic/hebrewcal/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/bsesic/hebrewcal/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bsesic/hebrewcal/releases/tag/v0.1.0

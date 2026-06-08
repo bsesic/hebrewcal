@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-07
+
+Phase 2 of the roadmap: the astronomy layer.
+
+### Added
+
+- Astronomy layer (pure Python, no dependencies): a `Location` value type
+  (coordinates, elevation, IANA time zone).
+- A Julian Day time base derived from the Rata Die count, and a bridge between
+  RD/UTC-minutes and timezone-aware datetimes.
+- A NOAA/Meeus solar position model (declination, equation of time), with
+  `sunrise`, `sunset` and `solar_noon` agreeing with reference implementations
+  to within ~20 seconds at mid latitudes.
+- Civil, nautical and astronomical twilight (`dawn`, `dusk`) with a configurable
+  solar depression angle.
+- The molad expressed as a civil instant in Jerusalem mean time.
+
 ## [0.1.1] - 2026-06-07
 
 ### Added
@@ -43,6 +60,7 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/bsesic/hebrewcal/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/bsesic/hebrewcal/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bsesic/hebrewcal/releases/tag/v0.1.0

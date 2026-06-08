@@ -77,3 +77,21 @@ Eras
 
 .. automodule:: hebrewcal.eras.anno_mundi
    :members:
+
+Astronomy
+---------
+
+.. automodule:: hebrewcal.astro.location
+   :members:
+
+.. automodule:: hebrewcal.astro.timekeeping
+   :members:
+
+.. automodule:: hebrewcal.astro.timezone
+   :members:
+
+.. automodule:: hebrewcal.astro.solar
+   :members:
+
+.. automodule:: hebrewcal.astro.molad
+   :members:

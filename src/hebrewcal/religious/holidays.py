@@ -11,8 +11,11 @@ from dataclasses import dataclass
 from enum import Enum
 
 from hebrewcal.calendars.hebrew import HebrewDate
+from hebrewcal.core.rata_die import weekday_from_rd
 from hebrewcal.hebrew.metonic import is_leap_year
 from hebrewcal.hebrew.yeartype import last_day_of_month, last_month_of_year
+
+_SHABBAT = 6  # weekday_from_rd: 0 = Sunday ... 6 = Saturday
 
 
 class Category(Enum):
@@ -61,6 +64,7 @@ def holidays(year: int, diaspora: bool = True) -> list[Holiday]:
     result: list[Holiday] = []
     result += _major(year, diaspora)
     result += _minor(year, diaspora)
+    result += _fasts(year, diaspora)
     result += rosh_chodesh(year)
     result.sort(key=lambda h: (h.date.to_rd(), h.name))
     return result
@@ -139,4 +143,42 @@ def _minor(year: int, diaspora: bool) -> list[Holiday]:
     add("Pesach Sheni", 2, 14)
     add("Lag BaOmer", 2, 18)
     add("Tu B'Av", 5, 15)
+    return out
+
+
+def _postpone_if_shabbat(date: HebrewDate) -> HebrewDate:
+    """Return the date, moved to Sunday if it falls on Shabbat."""
+    if weekday_from_rd(date.to_rd()) == _SHABBAT:
+        return HebrewDate.from_rd(date.to_rd() + 1)
+    return date
+
+
+def _fasts(year: int, diaspora: bool) -> list[Holiday]:
+    """Return the public fasts, applying the postponement rules."""
+    out: list[Holiday] = []
+    purim_month = _purim_month(year)
+
+    # These move to Sunday when they fall on Shabbat.
+    for name, month, day in (
+        ("Tzom Gedaliah", 7, 3),
+        ("Shiva Asar B'Tammuz", 4, 17),
+        ("Tisha B'Av", 5, 9),
+    ):
+        moved = _postpone_if_shabbat(HebrewDate(year, month, day))
+        out.append(Holiday(name, moved, Category.FAST))
+
+    # Asara B'Tevet is never postponed (it cannot fall on Shabbat).
+    out.append(Holiday("Asara B'Tevet", HebrewDate(year, 10, 10), Category.FAST))
+
+    # Ta'anit Esther: 13 Adar(II); if Shabbat, brought forward to Thursday (11 Adar).
+    esther = HebrewDate(year, purim_month, 13)
+    if weekday_from_rd(esther.to_rd()) == _SHABBAT:
+        esther = HebrewDate.from_rd(esther.to_rd() - 2)
+    out.append(Holiday("Ta'anit Esther", esther, Category.FAST))
+
+    # Ta'anit Bechorot: 14 Nisan, brought forward to Thursday 12 Nisan if on Shabbat.
+    bechorot = HebrewDate(year, 1, 14)
+    if weekday_from_rd(bechorot.to_rd()) == _SHABBAT:
+        bechorot = HebrewDate.from_rd(bechorot.to_rd() - 2)
+    out.append(Holiday("Ta'anit Bechorot", bechorot, Category.FAST))
     return out

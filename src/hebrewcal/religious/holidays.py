@@ -71,11 +71,40 @@ def holidays_on(date: HebrewDate, diaspora: bool = True) -> list[Holiday]:
 
 
 def _major(year: int, diaspora: bool) -> list[Holiday]:
-    """Placeholder for the major festivals, implemented in Task 2."""
-    return [
-        Holiday("Rosh Hashanah", HebrewDate(year, 7, 1), Category.MAJOR_FESTIVAL),
-        Holiday("Rosh Hashanah", HebrewDate(year, 7, 2), Category.MAJOR_FESTIVAL),
-    ]
+    """Return the major festivals, honouring the diaspora second festival day."""
+    out: list[Holiday] = []
+
+    def add(name: str, month: int, day: int, category: Category = Category.MAJOR_FESTIVAL) -> None:
+        out.append(Holiday(name, HebrewDate(year, month, day), category))
+
+    # Tishri.
+    add("Rosh Hashanah", 7, 1)
+    add("Rosh Hashanah", 7, 2)
+    add("Yom Kippur", 7, 10)
+    add("Sukkot", 7, 15)
+    if diaspora:
+        add("Sukkot", 7, 16)
+    for day in range(17 if diaspora else 16, 22):
+        add("Sukkot", 7, day, Category.CHOL_HAMOED)
+    add("Hoshana Rabbah", 7, 21, Category.MINOR_FESTIVAL)
+    add("Shemini Atzeret", 7, 22)
+    add("Simchat Torah", 7, 23 if diaspora else 22)
+
+    # Nisan - Pesach (7 days in Israel, 8 in the Diaspora).
+    add("Pesach", 1, 15)
+    if diaspora:
+        add("Pesach", 1, 16)
+    for day in range(17 if diaspora else 16, 21):
+        add("Pesach", 1, day, Category.CHOL_HAMOED)
+    add("Pesach", 1, 21)
+    if diaspora:
+        add("Pesach", 1, 22)
+
+    # Sivan - Shavuot (1 day in Israel, 2 in the Diaspora).
+    add("Shavuot", 3, 6)
+    if diaspora:
+        add("Shavuot", 3, 7)
+    return out
 
 
 def _purim_month(year: int) -> int:

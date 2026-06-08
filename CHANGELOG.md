@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Astronomy layer (pure Python, no dependencies): a `Location` value type
+  (coordinates, elevation, IANA time zone).
+- A Julian Day time base derived from the Rata Die count, and a bridge between
+  RD/UTC-minutes and timezone-aware datetimes.
+- A NOAA/Meeus solar position model (declination, equation of time), with
+  `sunrise`, `sunset` and `solar_noon` agreeing with reference implementations
+  to within ~20 seconds at mid latitudes.
+- Civil, nautical and astronomical twilight (`dawn`, `dusk`) with a configurable
+  solar depression angle.
+- The molad expressed as a civil instant in Jerusalem mean time.
+
 ## [0.1.1] - 2026-06-07
 
 ### Added

@@ -15,6 +15,7 @@ numerals
 names
 hebrew-internals
 anno-mundi
+astronomy
 ```
 
 ## How the pieces fit together

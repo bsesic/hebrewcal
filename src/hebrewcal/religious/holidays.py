@@ -65,6 +65,7 @@ def holidays(year: int, diaspora: bool = True) -> list[Holiday]:
     result += _major(year, diaspora)
     result += _minor(year, diaspora)
     result += _fasts(year, diaspora)
+    result += _modern(year, diaspora)
     result += rosh_chodesh(year)
     result.sort(key=lambda h: (h.date.to_rd(), h.name))
     return result
@@ -181,4 +182,38 @@ def _fasts(year: int, diaspora: bool) -> list[Holiday]:
     if weekday_from_rd(bechorot.to_rd()) == _SHABBAT:
         bechorot = HebrewDate.from_rd(bechorot.to_rd() - 2)
     out.append(Holiday("Ta'anit Bechorot", bechorot, Category.FAST))
+    return out
+
+
+def _modern(year: int, diaspora: bool) -> list[Holiday]:
+    """Return the modern Israeli days, applying the statutory weekday adjustments.
+
+    Weekdays use weekday_from_rd (0 = Sunday ... 6 = Saturday).
+    """
+    out: list[Holiday] = []
+
+    # Yom HaShoah, 27 Nisan: Friday -> 26 Nisan (Thu); Sunday -> 28 Nisan (Mon).
+    shoah = HebrewDate(year, 1, 27)
+    wd = weekday_from_rd(shoah.to_rd())
+    if wd == 5:  # Friday
+        shoah = HebrewDate(year, 1, 26)
+    elif wd == 0:  # Sunday
+        shoah = HebrewDate(year, 1, 28)
+    out.append(Holiday("Yom HaShoah", shoah, Category.MODERN))
+
+    # Yom HaZikaron (4 Iyyar) and Yom HaAtzmaut (5 Iyyar), keyed off 5 Iyyar's weekday.
+    # 5 Iyyar can only be Monday, Wednesday, Friday or Saturday (lo BaDU Pesach).
+    wd5 = weekday_from_rd(HebrewDate(year, 2, 5).to_rd())
+    if wd5 == 5:  # Friday -> Atzmaut Thu 4, Zikaron Wed 3
+        zikaron, atzmaut = (year, 2, 3), (year, 2, 4)
+    elif wd5 == 6:  # Saturday -> Atzmaut Thu 3, Zikaron Wed 2
+        zikaron, atzmaut = (year, 2, 2), (year, 2, 3)
+    elif wd5 == 1:  # Monday -> Zikaron Mon 5, Atzmaut Tue 6
+        zikaron, atzmaut = (year, 2, 5), (year, 2, 6)
+    else:  # Wednesday -> default Zikaron 4, Atzmaut 5
+        zikaron, atzmaut = (year, 2, 4), (year, 2, 5)
+    out.append(Holiday("Yom HaZikaron", HebrewDate(*zikaron), Category.MODERN))
+    out.append(Holiday("Yom HaAtzmaut", HebrewDate(*atzmaut), Category.MODERN))
+
+    out.append(Holiday("Yom Yerushalayim", HebrewDate(year, 2, 28), Category.MODERN))
     return out

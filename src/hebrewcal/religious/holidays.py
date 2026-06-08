@@ -67,6 +67,7 @@ def holidays(year: int, diaspora: bool = True) -> list[Holiday]:
     result += _fasts(year, diaspora)
     result += _modern(year, diaspora)
     result += _minority(year, diaspora)
+    result += _special_shabbatot(year, diaspora)
     result += rosh_chodesh(year)
     result.sort(key=lambda h: (h.date.to_rd(), h.name))
     return result
@@ -228,3 +229,43 @@ def _minority(year: int, diaspora: bool) -> list[Holiday]:
         # Mimouna, North African communities: the day after Pesach ends (22 Nisan).
         Holiday("Mimouna", HebrewDate(year, 1, 22), Category.MINORITY),
     ]
+
+
+def _shabbat_on_or_before(rd: int) -> int:
+    """Return the RD of the Saturday on or immediately before ``rd``."""
+    return rd - ((rd % 7) + 1) % 7
+
+
+def _shabbat_before(rd: int) -> int:
+    """Return the RD of the Saturday strictly before ``rd``."""
+    return _shabbat_on_or_before(rd - 1)
+
+
+def _shabbat_after(rd: int) -> int:
+    """Return the RD of the first Saturday strictly after ``rd``."""
+    return _shabbat_on_or_before(rd + 7)
+
+
+def _special_shabbatot(year: int, diaspora: bool) -> list[Holiday]:
+    """Return the named special Sabbaths of the year."""
+    out: list[Holiday] = []
+
+    def add(name: str, rd: int) -> None:
+        out.append(Holiday(name, HebrewDate.from_rd(rd), Category.SPECIAL_SHABBAT))
+
+    purim_month = _purim_month(year)
+    rosh_chodesh_adar = HebrewDate(year, purim_month, 1).to_rd()
+    rosh_chodesh_nisan = HebrewDate(year, 1, 1).to_rd()
+    purim = HebrewDate(year, purim_month, 14).to_rd()
+    pesach = HebrewDate(year, 1, 15).to_rd()
+    tisha_bav = HebrewDate(year, 5, 9).to_rd()
+
+    add("Shabbat Shekalim", _shabbat_on_or_before(rosh_chodesh_adar))
+    add("Shabbat Zachor", _shabbat_before(purim))
+    add("Shabbat Parah", _shabbat_before(_shabbat_on_or_before(rosh_chodesh_nisan)))
+    add("Shabbat HaChodesh", _shabbat_on_or_before(rosh_chodesh_nisan))
+    add("Shabbat HaGadol", _shabbat_before(pesach))
+    add("Shabbat Shuvah", _shabbat_after(HebrewDate(year, 7, 1).to_rd()))
+    add("Shabbat Chazon", _shabbat_before(tisha_bav))
+    add("Shabbat Nachamu", _shabbat_after(tisha_bav))
+    return out

@@ -66,6 +66,7 @@ def holidays(year: int, diaspora: bool = True) -> list[Holiday]:
     result += _minor(year, diaspora)
     result += _fasts(year, diaspora)
     result += _modern(year, diaspora)
+    result += _minority(year, diaspora)
     result += rosh_chodesh(year)
     result.sort(key=lambda h: (h.date.to_rd(), h.name))
     return result
@@ -217,3 +218,13 @@ def _modern(year: int, diaspora: bool) -> list[Holiday]:
 
     out.append(Holiday("Yom Yerushalayim", HebrewDate(year, 2, 28), Category.MODERN))
     return out
+
+
+def _minority(year: int, diaspora: bool) -> list[Holiday]:
+    """Return communal feasts of specific Jewish communities."""
+    return [
+        # Sigd, Ethiopian Jewry: 29 Marheshvan, the 50th day after Yom Kippur.
+        Holiday("Sigd", HebrewDate(year, 8, 29), Category.MINORITY),
+        # Mimouna, North African communities: the day after Pesach ends (22 Nisan).
+        Holiday("Mimouna", HebrewDate(year, 1, 22), Category.MINORITY),
+    ]

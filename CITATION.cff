@@ -4,9 +4,10 @@ title: hebrewcal
 abstract: >-
   A pure-Python library for the Hebrew calendar: bidirectional conversion against
   the Gregorian and Julian calendars, date parsing and formatting, gematria
-  numerals, month and weekday name tables, the Anno Mundi era, and an astronomy
-  layer (solar position, sunrise/sunset and twilight) — computed entirely locally
-  with no network calls.
+  numerals, month and weekday name tables, the Anno Mundi era, an astronomy layer
+  (solar position, sunrise/sunset and twilight), and a holiday engine (festivals,
+  fasts, modern Israeli days, the Omer and special Shabbatot, for Israel and the
+  Diaspora) — computed entirely locally with no network calls.
 type: software
 authors:
   - family-names: Schnabel
@@ -22,7 +23,7 @@ identifiers:
     value: 10.5281/zenodo.20583972
     description: The concept DOI resolving to the latest version.
 license: MIT
-version: 0.2.0
+version: 0.3.0
 date-released: "2026-06-07"
 keywords:
   - Hebrew calendar
@@ -34,3 +35,4 @@ keywords:
   - gematria
   - astronomy
   - zmanim
+  - Jewish holidays

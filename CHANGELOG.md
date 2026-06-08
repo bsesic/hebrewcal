@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Holiday engine for the Hebrew year: a `Holiday` value type, a `Category` enum,
+  and `holidays(year, diaspora=...)` / `holidays_on(date)`.
+- Major festivals with Israel/Diaspora differences (second festival day, Simchat
+  Torah placement, 7- vs 8-day Pesach, 1 vs 2 days Shavuot), plus Chol HaMoed.
+- Minor festivals (Hanukkah, Tu BiShvat, Purim and Shushan Purim with leap-year
+  Adar II placement, Lag BaOmer, Tu B'Av, Pesach Sheni) and Rosh Chodesh.
+- Public fasts with their postponement rules (Tzom Gedaliah, Asara B'Tevet,
+  Ta'anit Esther, Shiva Asar B'Tammuz, Tisha B'Av, Ta'anit Bechorot).
+- Modern Israeli days with the statutory weekday adjustments (Yom HaShoah,
+  Yom HaZikaron, Yom HaAtzmaut, Yom Yerushalayim).
+- Minority/communal feasts (Sigd, Mimouna).
+- The Omer count (`omer_count`, `omer_week_day`).
+- The special Shabbatot (Shekalim, Zachor, Parah, HaChodesh, HaGadol, Shuvah,
+  Chazon, Nachamu).
+
 ## [0.2.0] - 2026-06-07
 
 Phase 2 of the roadmap: the astronomy layer.

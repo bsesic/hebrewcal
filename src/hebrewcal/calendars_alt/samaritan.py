@@ -1,13 +1,13 @@
 """The Samaritan calendar - a computed model.
 
-```{warning}
-This is a *computed mean-lunar model*, not an authoritative reproduction of the
-Samaritan calendar. The living Samaritan calendar is fixed by the Samaritan High
-Priesthood using their own calculation, and the absolute correspondence and year
-numbering here are conventional. This module has NOT been verified against an
-authoritative Samaritan source; it is provided to demonstrate the extensible
-calendar interface and the mean-lunar structure.
-```
+.. warning::
+
+   This is a *computed mean-lunar model*, not an authoritative reproduction of the
+   Samaritan calendar. The living Samaritan calendar is fixed by the Samaritan High
+   Priesthood using their own calculation, and the absolute correspondence and year
+   numbering here are conventional. This module has NOT been verified against an
+   authoritative Samaritan source; it is provided to demonstrate the extensible
+   calendar interface and the mean-lunar structure.
 
 The model is a mean-conjunction lunar calendar (mean synodic month, 12 or 13
 months on the 19-year Metonic cycle), anchored to the Anno Mundi epoch so that

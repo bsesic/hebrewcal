@@ -18,6 +18,7 @@ anno-mundi
 astronomy
 holidays
 religious-times
+alternative-calendars
 ```
 
 ## How the pieces fit together

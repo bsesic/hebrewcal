@@ -122,3 +122,15 @@ Religious observances
 
 .. automodule:: hebrewcal.religious.sabbatical
    :members:
+
+Alternative calendars
+---------------------
+
+.. automodule:: hebrewcal.calendars_alt.qumran
+   :members:
+
+.. automodule:: hebrewcal.calendars_alt.samaritan
+   :members:
+
+.. automodule:: hebrewcal.calendars_alt.karaite
+   :members:

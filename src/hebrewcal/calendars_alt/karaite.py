@@ -1,15 +1,15 @@
 """The Karaite calendar - a computed approximation.
 
-```{warning}
-The authentic Karaite calendar is *observational*: each month begins with the
-first sighting of the new crescent moon over the Land of Israel, and the year is
-intercalated according to the ripeness of the barley (aviv). Those depend on
-observation and cannot be reduced to a formula. This module therefore provides a
-*computed approximation* only — a mean-conjunction lunar calendar with a one-day
-lag standing in for the delay between conjunction and first sighting. It has NOT
-been verified against actual Karaite practice and should not be used to determine
-observance.
-```
+.. warning::
+
+   The authentic Karaite calendar is *observational*: each month begins with the
+   first sighting of the new crescent moon over the Land of Israel, and the year is
+   intercalated according to the ripeness of the barley (aviv). Those depend on
+   observation and cannot be reduced to a formula. This module therefore provides a
+   *computed approximation* only - a mean-conjunction lunar calendar with a one-day
+   lag standing in for the delay between conjunction and first sighting. It has NOT
+   been verified against actual Karaite practice and should not be used to determine
+   observance.
 
 The approximation shares the mean-lunar engine with the Samaritan model and adds a
 one-day sighting lag; the epoch and year numbering are conventional (anchored to

@@ -1,6 +1,7 @@
 """Yahrzeit - the Hebrew-calendar anniversary of a death.
 
 Edge cases handled:
+
 - A death on the 30th of Marheshvan or Kislev: in a later year where that month has
   only 29 days, the yahrzeit moves to the 1st of the following month.
 - A death in Adar of a common year, or Adar II of a leap year, maps to Adar

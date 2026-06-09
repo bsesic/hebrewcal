@@ -5,9 +5,11 @@ abstract: >-
   A pure-Python library for the Hebrew calendar: bidirectional conversion against
   the Gregorian and Julian calendars, date parsing and formatting, gematria
   numerals, month and weekday name tables, the Anno Mundi era, an astronomy layer
-  (solar position, sunrise/sunset and twilight), and a holiday engine (festivals,
+  (solar position, sunrise/sunset and twilight), a holiday engine (festivals,
   fasts, modern Israeli days, the Omer and special Shabbatot, for Israel and the
-  Diaspora) — computed entirely locally with no network calls.
+  Diaspora), and religious times (candle lighting and Havdalah, zmanim, the molad
+  announcement, yahrzeit, Torah readings and the Shmita cycle) — computed entirely
+  locally with no network calls.
 type: software
 authors:
   - family-names: Schnabel
@@ -23,8 +25,8 @@ identifiers:
     value: 10.5281/zenodo.20583972
     description: The concept DOI resolving to the latest version.
 license: MIT
-version: 0.3.0
-date-released: "2026-06-07"
+version: 0.4.0
+date-released: "2026-06-09"
 keywords:
   - Hebrew calendar
   - Jewish calendar

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hebrewcal"
-version = "0.5.0"
+version = "1.0.0"
 description = "A pure-Python library for the Hebrew calendar: conversion, astronomy, holidays and religious times, computed entirely locally."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -21,7 +21,7 @@ keywords = [
     "calendrical",
 ]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Religion",
     "Intended Audience :: Science/Research",
@@ -60,6 +60,9 @@ docs = [
     "furo>=2024.1",
     "myst-parser>=3.0",
 ]
+
+[project.scripts]
+hebrewcal = "hebrewcal.cli:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

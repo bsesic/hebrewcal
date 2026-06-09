@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-06-09
+
+First stable release. Completes the roadmap: calendar core and conversion, astronomy,
+holidays, religious times, alternative calendars, and a command-line interface — all in
+pure Python with no runtime dependencies. The public API is now considered stable.
+
+### Added
+
+- An optional command-line interface: the `hebrewcal` console script (and
+  `python -m hebrewcal`) with `convert`, `holidays`, `parasha`, `shabbat` and
+  `zmanim` subcommands.
+- Curated public API surface: `hebrewcal.astro`, `hebrewcal.religious` and
+  `hebrewcal.calendars_alt` re-export their key names with explicit `__all__`.
+- `SECURITY.md`.
+
+### Changed
+
+- Memoised the heavily-used year-keyed helpers (`calendar_elapsed_days`,
+  `year_length_correction`, `new_year_rd`) for faster holiday/Torah computation.
+- Documentation polished for 1.0 (CLI guide, refreshed README and feature list).
+- Marked the development status as Production/Stable.
+
 ## [0.5.0] - 2026-06-09
 
 Phase 5 of the roadmap: alternative calendars.
@@ -114,7 +136,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/bsesic/hebrewcal/compare/v0.5.0...v1.0.0
 [0.5.0]: https://github.com/bsesic/hebrewcal/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/bsesic/hebrewcal/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/bsesic/hebrewcal/compare/v0.2.0...v0.3.0

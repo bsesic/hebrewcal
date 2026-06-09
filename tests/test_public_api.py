@@ -18,6 +18,8 @@ def test_astro_exports() -> None:
         "solar_declination",
         "equation_of_time",
         "molad_moment",
+        "nth_new_moon",
+        "new_moon_at_or_after",
     ):
         assert hasattr(astro, name), name
 

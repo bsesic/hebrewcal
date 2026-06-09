@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-06-09
+
+Phase 4 of the roadmap: the religious-time layer.
+
+### Added
+
+- Religious-time layer, built on the astronomy and calendar layers:
+  - Shabbat (and yom tov) candle lighting and Havdalah, with configurable offsets.
+  - Zmanim (halachic times): alot, misheyakir, sunrise, sof zman Shma/Tefilla
+    (GRA and MGA), chatzot, mincha gedola/ketana, plag hamincha, sunset, tzeit.
+  - The molad / Rosh Chodesh announcement (Shabbat Mevarchim).
+  - Yahrzeit, with the 30th-of-month and Adar edge cases.
+  - The Torah-reading schedule (annual cycle, Israel and Diaspora, plus a simple
+    triennial helper), verified against an independent reference on thousands of
+    Shabbatot.
+  - The Shmita (sabbatical) and Jubilee cycle.
+
 ## [0.3.0] - 2026-06-07
 
 Phase 3 of the roadmap: the holiday engine. This release completes the MVP
@@ -82,7 +99,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/bsesic/hebrewcal/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/bsesic/hebrewcal/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/bsesic/hebrewcal/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/bsesic/hebrewcal/compare/v0.1.0...v0.1.1

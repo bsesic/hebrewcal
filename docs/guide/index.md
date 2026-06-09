@@ -17,6 +17,7 @@ hebrew-internals
 anno-mundi
 astronomy
 holidays
+religious-times
 ```
 
 ## How the pieces fit together

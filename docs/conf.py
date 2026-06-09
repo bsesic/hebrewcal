@@ -27,6 +27,12 @@ templates_path = ["_templates"]
 # plans); they live in the repo but are not part of the published documentation.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "specs/**"]
 
+# Public types are intentionally re-exported from the package root (e.g.
+# ``hebrewcal.GregorianDate``) as well as their defining module, so type
+# annotations have more than one valid cross-reference target. Suppress that
+# specific ambiguity warning; genuine broken refs still surface in review.
+suppress_warnings = ["ref.python"]
+
 html_theme = "furo"
 html_static_path = ["_static"]
 

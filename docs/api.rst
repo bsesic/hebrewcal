@@ -104,3 +104,21 @@ Religious observances
 
 .. automodule:: hebrewcal.religious.omer
    :members:
+
+.. automodule:: hebrewcal.religious.shabbat
+   :members:
+
+.. automodule:: hebrewcal.religious.zmanim
+   :members:
+
+.. automodule:: hebrewcal.religious.announce
+   :members:
+
+.. automodule:: hebrewcal.religious.yahrzeit
+   :members:
+
+.. automodule:: hebrewcal.religious.torah
+   :members:
+
+.. automodule:: hebrewcal.religious.sabbatical
+   :members:

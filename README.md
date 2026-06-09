@@ -22,9 +22,9 @@ It is built for two audiences:
   month names, proleptic calendars, the Julian/Gregorian reform, and the documented
   "missing years" of the Anno Mundi count.
 
-> **Project status.** Early development. The calendar core, conversion and date handling
-> (Phase 1) are implemented. Astronomy, holidays and religious times follow on the
-> [roadmap](docs/specs/2026-06-03-architecture-roadmap.md).
+> **Project status.** Feature-complete against the roadmap: calendar core and conversion,
+> astronomy, holidays, religious times, and alternative calendars are all implemented,
+> documented and tested.
 
 ## Installation
 
@@ -62,16 +62,34 @@ to_julian(GregorianDate(2026, 6, 26))  # JulianDate(year=2026, month=6, day=13)
 
 ## Features
 
-- Proleptic **Gregorian** and **Julian** calendars, with an explicit, configurable
-  Julian/Gregorian reform helper.
-- A complete **Hebrew** calendar: molad and halakim, the dechiyot ("four gates"), year
-  typing (deficient / regular / complete), the keviah signature, and the Metonic cycle.
-- Bidirectional **conversion** between any supported calendars through Rata Die.
-- **Parsing** of Gregorian input (ISO 8601, DIN 5008 and slash form) and **formatting**
-  in numeric and named styles.
-- A **gematria** converter between integers and Hebrew numerals.
-- Month and weekday **name tables** (transliteration, Babylonian, biblical).
-- The **Anno Mundi** era with a documented "missing years" notice.
+- Proleptic **Gregorian** and **Julian** calendars (explicit, configurable
+  Julian/Gregorian reform) and a complete **Hebrew** calendar (molad/halakim, dechiyot,
+  year typing, keviah, Metonic cycle), all interconvertible through **Rata Die**.
+- **Parsing** (ISO 8601, DIN 5008, slash form), **formatting**, a **gematria** converter,
+  month/weekday **name tables** (transliteration, Babylonian, biblical), and the
+  **Anno Mundi** era with the documented "missing years" notice.
+- **Astronomy** (pure Python): solar position, sunrise/sunset, twilight, the molad as a
+  civil instant.
+- **Holidays** for Israel and the Diaspora: festivals, fasts (with postponement), modern
+  Israeli days, minority feasts, Rosh Chodesh, the Omer and the special Shabbatot.
+- **Religious times**: Shabbat candle lighting and Havdalah, zmanim, the molad
+  announcement, yahrzeit, Torah readings, and the Shmita cycle.
+- **Alternative calendars**: the Qumran 364-day calendar, plus documented computed
+  Samaritan and Karaite models.
+- An optional **command-line interface** (see below).
+
+## Command line
+
+Installing the package provides a `hebrewcal` command (and `python -m hebrewcal`):
+
+```console
+$ hebrewcal convert 1867-10-31
+2 Marheshvan 5628 (Yom Chamishi)
+
+$ hebrewcal shabbat 2026-06-26 --lat 40.71 --lon -74.01 --tz America/New_York
+Candle lighting: 20:13
+Havdalah: 21:21
+```
 
 ## Documentation
 

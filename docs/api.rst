@@ -36,6 +36,12 @@ Conversion
 .. automodule:: hebrewcal.conversion
    :members:
 
+Command-line interface
+----------------------
+
+.. automodule:: hebrewcal.cli
+   :members: main
+
 Hebrew arithmetic engine
 ------------------------
 

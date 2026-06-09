@@ -7,6 +7,8 @@ makes a year deficient, regular, or complete.
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 from hebrewcal.hebrew.dechiyot import year_length_correction
 from hebrewcal.hebrew.metonic import is_leap_year, months_in_year
 from hebrewcal.hebrew.molad import calendar_elapsed_days
@@ -20,6 +22,7 @@ def last_month_of_year(year: int) -> int:
     return months_in_year(year)
 
 
+@lru_cache(maxsize=8192)
 def new_year_rd(year: int) -> int:
     """Return the RD of 1 Tishri of the Hebrew ``year`` (Rosh Hashanah)."""
     return HEBREW_EPOCH + calendar_elapsed_days(year) + year_length_correction(year)

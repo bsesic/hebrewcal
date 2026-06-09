@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- An optional command-line interface: the `hebrewcal` console script (and
+  `python -m hebrewcal`) with `convert`, `holidays`, `parasha`, `shabbat` and
+  `zmanim` subcommands.
+- Curated public API surface: `hebrewcal.astro`, `hebrewcal.religious` and
+  `hebrewcal.calendars_alt` re-export their key names with explicit `__all__`.
+- `SECURITY.md`.
+
+### Changed
+
+- Memoised the heavily-used year-keyed helpers (`calendar_elapsed_days`,
+  `year_length_correction`, `new_year_rd`) for faster holiday/Torah computation.
+- Documentation polished for 1.0 (CLI guide, refreshed README and feature list).
+- Marked the development status as Production/Stable.
+
 ## [0.5.0] - 2026-06-09
 
 Phase 5 of the roadmap: alternative calendars.

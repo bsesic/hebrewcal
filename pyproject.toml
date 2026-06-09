@@ -21,7 +21,7 @@ keywords = [
     "calendrical",
 ]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Religion",
     "Intended Audience :: Science/Research",
@@ -60,6 +60,9 @@ docs = [
     "furo>=2024.1",
     "myst-parser>=3.0",
 ]
+
+[project.scripts]
+hebrewcal = "hebrewcal.cli:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

@@ -19,6 +19,7 @@ astronomy
 holidays
 religious-times
 alternative-calendars
+cli
 ```
 
 ## How the pieces fit together

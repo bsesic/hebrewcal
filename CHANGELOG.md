@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Native **Hebrew-script** output: `hebrew_month_name(..., system="hebrew")` and
+  `weekday_name(..., hebrew=True)`, a `format_hebrew(date, style="hebrew")` that
+  renders the day and year as gematria numerals (e.g. `א׳ תשרי ה׳תשפ״ה`), and a
+  `hebrewcal convert --hebrew` CLI flag.
+
 ## [1.0.0] - 2026-06-09
 
 First stable release. Completes the roadmap: calendar core and conversion, astronomy,

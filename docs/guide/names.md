@@ -31,6 +31,15 @@ available: `"transliteration"` (default), `"babylonian"` and `"biblical"`.
 'Aviv'
 ```
 
+Native **Hebrew script** is available too (`system="hebrew"`):
+
+```python
+>>> hebrew_month_name(5785, 7, system="hebrew")
+'תשרי'
+>>> hebrew_month_name(5784, 13, system="hebrew")   # Adar II in a leap year
+'אדר ב׳'
+```
+
 The `year` matters because leap years rename month 12:
 
 ```python
@@ -64,6 +73,8 @@ the library (see {doc}`rata-die`).
 >>> weekday_name(6)
 'Shabbat'
 ```
+
+Pass `hebrew=True` for native Hebrew script (`weekday_name(6, hebrew=True)` → `שבת`).
 
 Combine it with `weekday()` to label any date:
 

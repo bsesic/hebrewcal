@@ -9,9 +9,12 @@ gap between consecutive years' elapsed-day counts (Dershowitz & Reingold).
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 from hebrewcal.hebrew.molad import calendar_elapsed_days
 
 
+@lru_cache(maxsize=8192)
 def year_length_correction(year: int) -> int:
     """Return the 0, 1, or 2 day correction applied to ``year``'s new year."""
     ny0 = calendar_elapsed_days(year - 1)

@@ -9,6 +9,8 @@ molad-zaken / lo-ADU portion of the postponement logic (Dershowitz & Reingold).
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 HALAKIM_PER_HOUR: int = 1080
 HALAKIM_PER_DAY: int = 24 * HALAKIM_PER_HOUR  # 25920
 
@@ -29,6 +31,7 @@ def molad_parts(year: int, month: int) -> int:
     return 12084 + 13753 * months_elapsed + 29 * HALAKIM_PER_DAY * months_elapsed
 
 
+@lru_cache(maxsize=8192)
 def calendar_elapsed_days(year: int) -> int:
     """Return days from the Hebrew epoch to Tishri 1 of ``year``.
 

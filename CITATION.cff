@@ -8,8 +8,9 @@ abstract: >-
   (solar position, sunrise/sunset and twilight), a holiday engine (festivals,
   fasts, modern Israeli days, the Omer and special Shabbatot, for Israel and the
   Diaspora), and religious times (candle lighting and Havdalah, zmanim, the molad
-  announcement, yahrzeit, Torah readings and the Shmita cycle) — computed entirely
-  locally with no network calls.
+  announcement, yahrzeit, Torah readings and the Shmita cycle), and alternative
+  calendars (the Qumran 364-day calendar, plus computed Samaritan and Karaite
+  models) — computed entirely locally with no network calls.
 type: software
 authors:
   - family-names: Schnabel
@@ -25,7 +26,7 @@ identifiers:
     value: 10.5281/zenodo.20583972
     description: The concept DOI resolving to the latest version.
 license: MIT
-version: 0.4.0
+version: 0.5.0
 date-released: "2026-06-09"
 keywords:
   - Hebrew calendar

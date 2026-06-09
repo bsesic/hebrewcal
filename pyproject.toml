@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hebrewcal"
-version = "0.4.0"
+version = "0.5.0"
 description = "A pure-Python library for the Hebrew calendar: conversion, astronomy, holidays and religious times, computed entirely locally."
 readme = "README.md"
 requires-python = ">=3.11"

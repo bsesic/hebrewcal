@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-06-09
+
+Phase 5 of the roadmap: alternative calendars.
+
+### Added
+
+- Alternative calendars (via the same Rata Die interface):
+  - The **Qumran / Jubilees** 364-day solar calendar (exact: four 91-day
+    quarters, every year starts on the same weekday, no intercalation).
+  - A **Samaritan** computed mean-lunar model and a **Karaite** computed
+    approximation (mean conjunction with a one-day sighting lag). Both are
+    clearly documented as computed models that are not verified against an
+    authoritative source and, for the Karaite calendar, do not replace
+    observation.
+
 ## [0.4.0] - 2026-06-09
 
 Phase 4 of the roadmap: the religious-time layer.
@@ -99,7 +114,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/bsesic/hebrewcal/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/bsesic/hebrewcal/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/bsesic/hebrewcal/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/bsesic/hebrewcal/compare/v0.1.1...v0.2.0

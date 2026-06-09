@@ -33,6 +33,14 @@ Hebrew dates have a numeric style and a named style that uses the
 '5785-07-01'
 ```
 
+The `"hebrew"` style renders the date in native Hebrew script, with the day and year as
+gematria numerals:
+
+```python
+>>> format_hebrew(HebrewDate(5785, 7, 1), style="hebrew")
+'א׳ תשרי ה׳תשפ״ה'
+```
+
 The named style understands leap-year month naming (Adar I / Adar II):
 
 ```python

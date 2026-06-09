@@ -12,6 +12,7 @@ from collections.abc import Sequence
 from hebrewcal import GregorianDate, to_hebrew, to_julian, weekday
 from hebrewcal.astro.location import Location
 from hebrewcal.conversion import to_gregorian
+from hebrewcal.formatting.dates import format_hebrew
 from hebrewcal.names import hebrew_month_name, weekday_name
 from hebrewcal.parsing.dates import parse_gregorian
 from hebrewcal.religious.holidays import holidays
@@ -33,6 +34,9 @@ def _build_parser() -> argparse.ArgumentParser:
     convert = sub.add_parser("convert", help="Convert a Gregorian date.")
     convert.add_argument("date", help="Gregorian date (ISO 8601, DIN 5008 or slash form).")
     convert.add_argument("--to", choices=("hebrew", "julian"), default="hebrew")
+    convert.add_argument(
+        "--hebrew", action="store_true", help="Output the Hebrew date in Hebrew script."
+    )
 
     hol = sub.add_parser("holidays", help="List the holidays of a Hebrew year.")
     hol.add_argument("year", type=int, help="Hebrew (Anno Mundi) year.")
@@ -68,11 +72,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         if args.command == "convert":
             g = parse_gregorian(args.date)
-            if args.to == "hebrew":
-                print(_hebrew_label(g))
-            else:
+            if args.to == "julian":
                 j = to_julian(g)
                 print(f"{j.year}-{j.month:02d}-{j.day:02d} (Julian)")
+            elif args.hebrew:
+                date = format_hebrew(to_hebrew(g), style="hebrew")
+                day = weekday_name(weekday(g), hebrew=True)
+                print(f"{date} ({day})")
+            else:
+                print(_hebrew_label(g))
         elif args.command == "holidays":
             for h in holidays(args.year, diaspora=not args.israel):
                 g = to_gregorian(h.date)

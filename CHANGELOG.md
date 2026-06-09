@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- The **true astronomical new moon** (`hebrewcal.astro.lunar`): `nth_new_moon`,
+  `new_moon_at_or_after` and `new_moon_before`, computed with the Meeus periodic
+  terms and distinct from the calendar's mean molad (the two differ by up to
+  ~14 hours). Verified against an independent ephemeris to ~1 minute.
+
 ## [1.1.0] - 2026-06-09
 
 ### Added

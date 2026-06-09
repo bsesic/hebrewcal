@@ -11,6 +11,12 @@ The most-used names are re-exported here for convenience.
 from __future__ import annotations
 
 from hebrewcal.astro.location import Location
+from hebrewcal.astro.lunar import (
+    MEAN_SYNODIC_MONTH,
+    new_moon_at_or_after,
+    new_moon_before,
+    nth_new_moon,
+)
 from hebrewcal.astro.molad import molad_breakdown, molad_moment
 from hebrewcal.astro.solar import (
     ASTRONOMICAL_DEPRESSION,
@@ -30,6 +36,7 @@ from hebrewcal.astro.timekeeping import julian_centuries, julian_day, julian_day
 __all__ = [
     "ASTRONOMICAL_DEPRESSION",
     "CIVIL_DEPRESSION",
+    "MEAN_SYNODIC_MONTH",
     "NAUTICAL_DEPRESSION",
     "SUNRISE_SUNSET_DEPRESSION",
     "Location",
@@ -41,6 +48,9 @@ __all__ = [
     "julian_day_from_rd",
     "molad_breakdown",
     "molad_moment",
+    "new_moon_at_or_after",
+    "new_moon_before",
+    "nth_new_moon",
     "solar_declination",
     "solar_noon",
     "sunrise",

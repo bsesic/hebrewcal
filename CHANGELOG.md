@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-06-10
+
+### Added
+
+- Configurable **yahrzeit conventions**: `yahrzeit(...)` now takes `adar`
+  (`AdarObservance.ADAR_II`/`ADAR_I` — where a plain-Adar yahrzeit falls in a leap
+  year) and `month30` (`Month30Observance.FIRST_OF_NEXT`/`TWENTY_NINTH` — a
+  30th-of-month yahrzeit in a short year). Defaults preserve the previous behaviour.
+
+### Changed
+
+- `triennial_portion` documents that it returns the triennial **cycle position**
+  only; the specific verse ranges follow the published CJLS table, which is not
+  included.
+
 ## [1.4.0] - 2026-06-10
 
 ### Changed
@@ -176,7 +191,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/bsesic/hebrewcal/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/bsesic/hebrewcal/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/bsesic/hebrewcal/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/bsesic/hebrewcal/compare/v1.1.0...v1.2.0

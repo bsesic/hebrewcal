@@ -21,12 +21,14 @@ from hebrewcal.religious.omer import omer_count, omer_week_day
 from hebrewcal.religious.sabbatical import is_jubilee, is_shmita, shmita_cycle_year
 from hebrewcal.religious.shabbat import candle_lighting, havdalah
 from hebrewcal.religious.torah import parasha, triennial_portion
-from hebrewcal.religious.yahrzeit import yahrzeit
+from hebrewcal.religious.yahrzeit import AdarObservance, Month30Observance, yahrzeit
 from hebrewcal.religious.zmanim import Zmanim
 
 __all__ = [
+    "AdarObservance",
     "Category",
     "Holiday",
+    "Month30Observance",
     "MonthAnnouncement",
     "Zmanim",
     "candle_lighting",

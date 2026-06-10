@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-06-10
+
 ### Changed
 
 - The **Karaite** calendar is now an **astronomical estimate** of the observational
@@ -174,7 +176,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/bsesic/hebrewcal/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/bsesic/hebrewcal/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/bsesic/hebrewcal/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/bsesic/hebrewcal/compare/v1.0.0...v1.1.0

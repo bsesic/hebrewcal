@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Additional **zmanim opinions**: `alot_hashachar`, `misheyakir` and
+  `tzeit_hakochavim` take a configurable solar depression, plus fixed-minute
+  variants `alot_hashachar_fixed`, `tzeit_fixed` and `tzeit_rabbeinu_tam`.
+- Optional **elevation** correction for `sunrise`/`sunset` (`elevation=True`),
+  using the geometric horizon dip `acos(R/(R+h))` (`elevation_depression`).
+
 ## [1.2.0] - 2026-06-09
 
 ### Added

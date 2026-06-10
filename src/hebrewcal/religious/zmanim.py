@@ -45,14 +45,32 @@ class Zmanim:
     def chatzot(self) -> datetime.datetime:
         return solar_noon(self._date, self._loc)
 
-    def alot_hashachar(self) -> datetime.datetime | None:
-        return dawn(self._date, self._loc, _ALOT_DEPRESSION)
+    def alot_hashachar(self, degrees: float = _ALOT_DEPRESSION) -> datetime.datetime | None:
+        """Dawn at the given solar depression (default 16.1°, the MGA opinion)."""
+        return dawn(self._date, self._loc, degrees)
 
-    def misheyakir(self) -> datetime.datetime | None:
-        return dawn(self._date, self._loc, _MISHEYAKIR_DEPRESSION)
+    def alot_hashachar_fixed(self, minutes: float = 72.0) -> datetime.datetime | None:
+        """Dawn as a fixed number of clock minutes before sunrise (default 72)."""
+        sr = self.sunrise()
+        return None if sr is None else sr - datetime.timedelta(minutes=minutes)
 
-    def tzeit_hakochavim(self) -> datetime.datetime | None:
-        return dusk(self._date, self._loc, _TZEIT_DEPRESSION)
+    def misheyakir(self, degrees: float = _MISHEYAKIR_DEPRESSION) -> datetime.datetime | None:
+        """Earliest tallit/tefillin time at the given depression (default 11°)."""
+        return dawn(self._date, self._loc, degrees)
+
+    def tzeit_hakochavim(self, degrees: float = _TZEIT_DEPRESSION) -> datetime.datetime | None:
+        """Nightfall (three stars) at the given depression (default 8.5°)."""
+        return dusk(self._date, self._loc, degrees)
+
+    def tzeit_fixed(self, minutes: float = 42.0) -> datetime.datetime | None:
+        """Nightfall as a fixed number of clock minutes after sunset (default 42)."""
+        ss = self.sunset()
+        return None if ss is None else ss + datetime.timedelta(minutes=minutes)
+
+    def tzeit_rabbeinu_tam(self, minutes: float = 72.0) -> datetime.datetime | None:
+        """Rabbeinu Tam nightfall: a fixed number of minutes after sunset (default 72)."""
+        ss = self.sunset()
+        return None if ss is None else ss + datetime.timedelta(minutes=minutes)
 
     # Seasonal-hour lengths.
     def _gra_hour(self) -> datetime.timedelta | None:

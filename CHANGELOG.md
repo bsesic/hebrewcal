@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-06-09
+
+### Added
+
+- The **true astronomical new moon** (`hebrewcal.astro.lunar`): `nth_new_moon`,
+  `new_moon_at_or_after` and `new_moon_before`, computed with the Meeus periodic
+  terms and distinct from the calendar's mean molad (the two differ by up to
+  ~14 hours). Verified against an independent ephemeris to ~1 minute.
+
 ## [1.1.0] - 2026-06-09
 
 ### Added
@@ -145,7 +154,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/bsesic/hebrewcal/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/bsesic/hebrewcal/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/bsesic/hebrewcal/compare/v0.5.0...v1.0.0
 [0.5.0]: https://github.com/bsesic/hebrewcal/compare/v0.4.0...v0.5.0

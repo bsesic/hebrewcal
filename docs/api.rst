@@ -102,6 +102,9 @@ Astronomy
 .. automodule:: hebrewcal.astro.molad
    :members:
 
+.. automodule:: hebrewcal.astro.lunar
+   :members:
+
 Religious observances
 ---------------------
 

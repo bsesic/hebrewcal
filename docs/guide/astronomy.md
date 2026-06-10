@@ -117,7 +117,28 @@ evening); `molad_breakdown` gives the traditional day/hours/parts presentation.
 :class: note
 
 The molad is a *mean* conjunction and can differ from the true astronomical new moon by
-up to ~14 hours. This module exposes the molad for comparison; it does not compute true
-syzygy. The interval between consecutive molads is exactly 29 days, 12 hours and 793
-parts.
+up to ~14 hours. The interval between consecutive molads is exactly 29 days, 12 hours and
+793 parts.
+```
+
+### The true new moon
+
+`hebrewcal.astro.lunar` computes the *true* lunar conjunction (Meeus, *Astronomical
+Algorithms*), for comparison with the molad and for academic use:
+
+```python
+>>> from hebrewcal.astro.lunar import nth_new_moon, new_moon_at_or_after
+>>> from hebrewcal import GregorianDate
+>>> nth_new_moon(0).strftime("%Y-%m-%d %H:%M")        # Meeus lunation 0
+'2000-01-06 18:14'
+>>> new_moon_at_or_after(GregorianDate(2024, 12, 1)).strftime("%Y-%m-%d %H:%M")
+'2024-12-01 06:22'
+```
+
+```{admonition} Accuracy and time scale
+:class: note
+
+The returned datetimes are UTC-aware but the underlying value is in Terrestrial Time; the
+difference from UTC is ΔT (a few tens of seconds today). The implementation agrees with an
+independent ephemeris to about one minute.
 ```

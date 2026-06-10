@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Configurable **yahrzeit conventions**: `yahrzeit(...)` now takes `adar`
+  (`AdarObservance.ADAR_II`/`ADAR_I` — where a plain-Adar yahrzeit falls in a leap
+  year) and `month30` (`Month30Observance.FIRST_OF_NEXT`/`TWENTY_NINTH` — a
+  30th-of-month yahrzeit in a short year). Defaults preserve the previous behaviour.
+
+### Changed
+
+- `triennial_portion` documents that it returns the triennial **cycle position**
+  only; the specific verse ranges follow the published CJLS table, which is not
+  included.
+
 ## [1.4.0] - 2026-06-10
 
 ### Changed

@@ -137,8 +137,20 @@ def parasha(date: HebrewDate, israel: bool = False) -> str | None:
 
 
 def triennial_portion(date: HebrewDate, israel: bool = False) -> int | None:
-    """Return which third (1, 2 or 3) of the weekly parashah is read under the common
-    triennial cycle, or None if there is no weekly parashah that Shabbat."""
+    """Return the triennial-cycle position (1, 2 or 3) for the Shabbat ``date``.
+
+    Under the modern (Conservative) triennial cycle the same weekly parashah is read
+    each year, but only one third of it; this returns *which* third — the position of
+    the annual cycle within the running three-year cycle. ``None`` is returned when
+    there is no weekly parashah that Shabbat.
+
+    .. note::
+
+       This is the cycle **structure** only. The specific verse ranges of each third
+       are defined by the published CJLS triennial table, which is not included here;
+       so this does not by itself tell you which verses are read. The cycle position
+       is taken modulo three from the start of the annual reading cycle.
+    """
     if parasha(date, israel) is None:
         return None
     rd = date.to_rd()

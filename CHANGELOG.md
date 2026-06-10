@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The **Karaite** calendar is now an **astronomical estimate** of the observational
+  calendar: months begin on estimated first crescent visibility over Jerusalem
+  (the first sunset at least ~20 hours after the *true* lunar conjunction) and the
+  year is set by the equinox-based aviv rule. It replaces the previous mean-lunar
+  approximation. Built on verified astronomy and clearly documented as an estimate;
+  it is now limited to the years `datetime` supports (1–9999). The Samaritan
+  calendar remains the documented computed model.
+
 ## [1.3.0] - 2026-06-10
 
 ### Added

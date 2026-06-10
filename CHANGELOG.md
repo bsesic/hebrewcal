@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-06-10
+
+### Added
+
+- Additional **zmanim opinions**: `alot_hashachar`, `misheyakir` and
+  `tzeit_hakochavim` take a configurable solar depression, plus fixed-minute
+  variants `alot_hashachar_fixed`, `tzeit_fixed` and `tzeit_rabbeinu_tam`.
+- Optional **elevation** correction for `sunrise`/`sunset` (`elevation=True`),
+  using the geometric horizon dip `acos(R/(R+h))` (`elevation_depression`).
+
 ## [1.2.0] - 2026-06-09
 
 ### Added
@@ -154,7 +164,8 @@ handling) of the roadmap.
 - Month and weekday name tables (transliteration, Babylonian, biblical).
 - Anno Mundi era with a documented "missing years" notice.
 
-[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/bsesic/hebrewcal/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/bsesic/hebrewcal/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/bsesic/hebrewcal/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/bsesic/hebrewcal/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/bsesic/hebrewcal/compare/v0.5.0...v1.0.0

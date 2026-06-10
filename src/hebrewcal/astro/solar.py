@@ -24,6 +24,20 @@ CIVIL_DEPRESSION: float = 6.0
 NAUTICAL_DEPRESSION: float = 12.0
 ASTRONOMICAL_DEPRESSION: float = 18.0
 
+# Earth's radius (metres) used for the elevation horizon-dip correction.
+_EARTH_RADIUS_M: float = 6356900.0
+
+
+def elevation_depression(elevation_m: float) -> float:
+    """Return the extra horizon dip (degrees) for an observer at ``elevation_m``.
+
+    Uses the geometric dip ``acos(R / (R + h))`` consistent with common zmanim
+    software (e.g. KosherJava). Returns 0 for non-positive elevations.
+    """
+    if elevation_m <= 0.0:
+        return 0.0
+    return math.degrees(math.acos(_EARTH_RADIUS_M / (_EARTH_RADIUS_M + elevation_m)))
+
 
 def _solar_terms(t: float) -> tuple[float, float]:
     """Return (declination_degrees, equation_of_time_minutes) for Julian century ``t``."""
@@ -103,20 +117,46 @@ def _solar_noon_minutes_utc(rd: int, longitude: float) -> float:
     return minutes
 
 
-def sunrise(date: GregorianDate, location: Location) -> datetime.datetime | None:
-    """Return the sunrise as a local datetime, or None if the sun does not rise."""
+def _sunrise_sunset_depression(location: Location, elevation: bool) -> float:
+    if elevation:
+        return SUNRISE_SUNSET_DEPRESSION + elevation_depression(location.elevation)
+    return SUNRISE_SUNSET_DEPRESSION
+
+
+def sunrise(
+    date: GregorianDate, location: Location, *, elevation: bool = False
+) -> datetime.datetime | None:
+    """Return the sunrise as a local datetime, or None if the sun does not rise.
+
+    With ``elevation=True`` the observer's elevation (``location.elevation``) lowers
+    the visible horizon, making sunrise earlier.
+    """
     minutes = _event_minutes_utc(
-        date.to_rd(), location.latitude, location.longitude, SUNRISE_SUNSET_DEPRESSION, True
+        date.to_rd(),
+        location.latitude,
+        location.longitude,
+        _sunrise_sunset_depression(location, elevation),
+        True,
     )
     if minutes is None:
         return None
     return local_datetime(date.to_rd(), minutes=minutes, timezone=location.timezone)
 
 
-def sunset(date: GregorianDate, location: Location) -> datetime.datetime | None:
-    """Return the sunset as a local datetime, or None if the sun does not set."""
+def sunset(
+    date: GregorianDate, location: Location, *, elevation: bool = False
+) -> datetime.datetime | None:
+    """Return the sunset as a local datetime, or None if the sun does not set.
+
+    With ``elevation=True`` the observer's elevation (``location.elevation``) lowers
+    the visible horizon, making sunset later.
+    """
     minutes = _event_minutes_utc(
-        date.to_rd(), location.latitude, location.longitude, SUNRISE_SUNSET_DEPRESSION, False
+        date.to_rd(),
+        location.latitude,
+        location.longitude,
+        _sunrise_sunset_depression(location, elevation),
+        False,
     )
     if minutes is None:
         return None

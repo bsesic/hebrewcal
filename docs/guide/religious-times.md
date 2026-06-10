@@ -89,13 +89,30 @@ Shabbat Mevarchim on which the month is blessed.
 HebrewDate(year=5785, month=10, day=10)
 ```
 
-```{admonition} Edge cases
+```{admonition} Community conventions
 :class: note
 
-- A death on 30 Marheshvan or 30 Kislev moves to the 1st of the next month in a year
-  where that month has only 29 days.
-- A death in Adar II of a leap year is observed in Adar (month 12) in a common year and
-  in Adar II (month 13) in a leap year.
+Two cases depend on custom and are configurable:
+
+- **Adar in a leap year** (`adar=`): a death in plain Adar of a common year is observed in
+  Adar II by the common Ashkenazi ruling (default, `AdarObservance.ADAR_II`) or in Adar I
+  (`AdarObservance.ADAR_I`). A death in Adar I stays in Adar I; a death in Adar II stays in
+  Adar II.
+- **30th of Marheshvan/Kislev** (`month30=`): when the month is short that year, the
+  yahrzeit is observed on the 1st of the next month (default,
+  `Month30Observance.FIRST_OF_NEXT`) or on the 29th (`Month30Observance.TWENTY_NINTH`).
+
+```python
+>>> from hebrewcal.religious.yahrzeit import yahrzeit, AdarObservance
+>>> from hebrewcal.calendars.hebrew import HebrewDate
+>>> yahrzeit(HebrewDate(5785, 12, 7), 5787).month                       # leap year: Adar II
+13
+>>> yahrzeit(HebrewDate(5785, 12, 7), 5787, adar=AdarObservance.ADAR_I).month
+12
+```
+
+The first-year custom of following the date of burial is not modelled (only the death
+date is used).
 ```
 
 ## Torah readings

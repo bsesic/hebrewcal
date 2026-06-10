@@ -1,8 +1,10 @@
 """Round-trip and structural validation for the alternative calendars.
 
 These calendars have no widely available reference implementation; correctness
-here rests on round-trip consistency and documented structural invariants (the
-Qumran calendar is exact, the Samaritan and Karaite models are computed).
+here rests on round-trip consistency and documented structural invariants. The
+Qumran calendar is exact; the Samaritan model is computed; the Karaite calendar is
+an astronomical estimate built on the verified true new moon (and is therefore
+limited to the years the standard library's ``datetime`` supports).
 """
 
 from __future__ import annotations
@@ -16,10 +18,18 @@ from hebrewcal.core.rata_die import weekday_from_rd
 
 
 @pytest.mark.parametrize("rd", [-200000, -1000, 0, 1, 500000, 739793])
-def test_all_alt_calendars_round_trip(rd: int) -> None:
+def test_integer_calendars_round_trip(rd: int) -> None:
+    # Qumran and Samaritan use pure integer arithmetic and work proleptically.
     assert QumranDate.from_rd(rd).to_rd() == rd
     assert SamaritanDate.from_rd(rd).to_rd() == rd
-    assert KaraiteDate.from_rd(rd).to_rd() == rd
+
+
+def test_karaite_round_trip_modern_range() -> None:
+    # The Karaite estimate uses datetime/sunset, so it is exercised over a modern range.
+    start = KaraiteDate(5770, 1, 1).to_rd()
+    end = KaraiteDate(5795, 1, 1).to_rd()
+    for rd in range(start, end, 17):
+        assert KaraiteDate.from_rd(rd).to_rd() == rd
 
 
 def test_qumran_year_invariants() -> None:
@@ -32,13 +42,9 @@ def test_qumran_year_invariants() -> None:
     assert len(weekdays) == 1
 
 
-def test_lunar_models_year_lengths() -> None:
-    for cls in (SamaritanDate, KaraiteDate):
-        for year in range(5780, 5800):
-            length = cls(year + 1, 1, 1).to_rd() - cls(year, 1, 1).to_rd()
-            assert length in (353, 354, 355, 383, 384, 385)
-
-
-def test_karaite_lags_samaritan_by_one_day() -> None:
+def test_lunar_model_year_lengths() -> None:
     for year in range(5780, 5800):
-        assert KaraiteDate(year, 1, 1).to_rd() == SamaritanDate(year, 1, 1).to_rd() + 1
+        s_len = SamaritanDate(year + 1, 1, 1).to_rd() - SamaritanDate(year, 1, 1).to_rd()
+        assert s_len in (353, 354, 355, 383, 384, 385)
+        k_len = KaraiteDate(year + 1, 1, 1).to_rd() - KaraiteDate(year, 1, 1).to_rd()
+        assert k_len in (354, 355, 383, 384)  # common ~354/355, leap ~383/384

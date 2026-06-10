@@ -54,15 +54,33 @@ Metonic cycle), anchored so that year numbers approximate the traditional count.
 GregorianDate(year=2024, month=10, day=3)
 ```
 
-## Karaite (computed approximation)
+## Karaite (astronomical estimate)
 
-The authentic Karaite calendar is observational (new-moon sighting over the Land of Israel
-and the ripeness of the barley). This model approximates it with the mean conjunction plus
-a one-day sighting lag.
+The authentic Karaite calendar is **observational** (first sighting of the new crescent
+over the Land of Israel, with the year set by the ripeness of the spring barley). This
+module gives an **astronomical estimate**, built on verified astronomy:
+
+- A month begins on the evening of estimated first crescent visibility over Jerusalem —
+  the first sunset, at or after the **true** lunar conjunction
+  ({doc}`astronomy`), at which the moon is at least 20 hours old (a simple age criterion,
+  not a full altitude/elongation visibility model).
+- The year begins with the month whose 15th day (Passover) is the first on or after the
+  vernal equinox (an approximation of the aviv rule).
 
 ```python
 >>> from hebrewcal.calendars_alt.karaite import KaraiteDate
->>> from hebrewcal.calendars_alt.samaritan import SamaritanDate
->>> KaraiteDate(5785, 1, 1).to_rd() - SamaritanDate(5785, 1, 1).to_rd()   # the one-day lag
-1
+>>> from hebrewcal import GregorianDate
+>>> GregorianDate.from_rd(KaraiteDate(5785, 1, 1).to_rd())    # Aviv (month 1) begins in spring
+GregorianDate(year=2025, month=3, day=31)
+>>> GregorianDate.from_rd(KaraiteDate(5785, 1, 15).to_rd())   # Passover, on/after the equinox
+GregorianDate(year=2025, month=4, day=14)
+```
+
+```{admonition} Estimate, not observance
+:class: warning
+
+The underlying astronomy (true conjunction, sunset, equinox) is verified, but the calendar
+is **not** validated against actual Karaite practice — real sightings and barley reports
+can differ, especially in the choice of the leap month. Because it uses ``datetime``, it is
+limited to the years 1–9999. Do not use it to determine observance.
 ```

@@ -45,6 +45,20 @@ occur that day).
 '12:58'
 ```
 
+### Elevation
+
+By default sunrise/sunset use the sea-level horizon. Pass `elevation=True` to account for
+the observer's elevation (`Location.elevation`), which lowers the visible horizon — sunrise
+earlier, sunset later. The dip uses the geometric formula `acos(R / (R + h))`, consistent
+with common zmanim software:
+
+```python
+>>> jerusalem = Location(31.7683, 35.2137, elevation=754.0, timezone="Asia/Jerusalem")
+>>> sunrise(GregorianDate(2026, 6, 26), jerusalem, elevation=True) < \
+...     sunrise(GregorianDate(2026, 6, 26), jerusalem)
+True
+```
+
 ```{admonition} Events are absolute instants
 :class: warning
 

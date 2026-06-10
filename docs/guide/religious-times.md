@@ -43,6 +43,24 @@ Available times: `alot_hashachar`, `misheyakir`, `sunrise`, `sof_zman_shma_gra` 
 `mincha_gedola`, `mincha_ketana`, `plag_hamincha`, `sunset`, `tzeit_hakochavim`. Each
 returns `None` at high latitudes where the underlying event does not occur.
 
+### Opinions and variants
+
+`alot_hashachar`, `misheyakir` and `tzeit_hakochavim` take a configurable solar
+depression, and fixed-clock-minute variants are provided for the common opinions:
+
+```python
+>>> z = Zmanim(GregorianDate(2026, 6, 26), nyc)
+>>> z.alot_hashachar(19.8) < z.alot_hashachar()        # a deeper (earlier) dawn opinion
+True
+>>> z.alot_hashachar_fixed(72) is not None              # 72 clock minutes before sunrise
+True
+>>> z.tzeit_rabbeinu_tam(72).strftime("%H:%M")          # Rabbeinu Tam nightfall
+'21:43'
+```
+
+Sunrise/sunset can also be elevation-corrected via the astronomy layer
+(`sunrise(date, location, elevation=True)`); see {doc}`astronomy`.
+
 ## Molad / Rosh Chodesh announcement
 
 `month_announcement(year, month)` returns the molad, the Rosh Chodesh day(s) and the
